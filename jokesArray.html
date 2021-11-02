@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <script>
+            var getJoke = function() {
+                var request = new XMLHttpRequest();
+                request.open("GET", "https://official-joke-api.appspot.com/jokes/programming/ten", true);
+
+                request.onload = function() {
+                    var dataArray = JSON.parse(this.response);
+                    for(var i=0; i<dataArray.length; i++) {
+                        var data = dataArray[i];
+                        var setup = data.setup;
+                        var punchline = data.punchline;
+                        document.write("Setup: " + setup);
+                        document.write(" Punchline: " +punchline+ "<br></br>");
+                    }
+                };
+                request.send();
+            }
+        </script>
+    </head>
+<body onload ="getJoke()">
+
+</body>
+
+</html>
